@@ -20,7 +20,7 @@ class ThumnailPhotoCollectionViewCell: UICollectionViewCell {
     
     func updateContent(_ photoData: PhotoModel) {
         
-        guard let imageURL = photoData.imageURL else {
+        guard let imageURL = photoData.thumnailURL else {
             return // TODO: Error condition
         }
 

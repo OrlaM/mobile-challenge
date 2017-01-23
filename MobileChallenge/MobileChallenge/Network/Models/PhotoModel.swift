@@ -23,6 +23,7 @@ class PhotoModel {
     var votesCount: Int = 0
     var commentsCount: Int = 0
     var nsfw: Bool?
+    var thumnailURL: String?
     var imageURL: String?
     var user: Dictionary<String,Any>?
     

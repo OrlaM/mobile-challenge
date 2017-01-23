@@ -23,11 +23,12 @@ class PhotoService {
         public var quality: String {
             switch self {
             case .getPopularPhotoList:
-                return "image_size=\(thumnailQuality)&"
+                return "image_size=\(thumnailQuality),\(fullQuality)&"
             case .getIndividualPhoto:
                 return "image_size=\(fullQuality)&"
             }
         }
+        
         public var method: String {
             switch self {
             case .getPopularPhotoList,
@@ -47,15 +48,15 @@ class PhotoService {
     
     }
     
-    func getPhotos(photoURL: PhotoURL, _ completion: @escaping (_ result: PhotoListModel) -> Void) {
+    func getPhotos(_ completion: @escaping (_ result: PhotoListModel) -> Void) {
         
-        guard let url = URL(string: photoURL.path) else {
+        guard let url = URL(string: PhotoURL.getPopularPhotoList.path) else {
             return
         }
         
         let session = URLSession.shared
         var request = URLRequest(url: url)
-        request.httpMethod = photoURL.method
+        request.httpMethod = PhotoURL.getPopularPhotoList.method
         request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
         
         
@@ -99,7 +100,24 @@ class PhotoService {
                 photo.votesCount = photoDict["votes_count"] as? Int ?? 0
                 photo.commentsCount = photoDict["comments_count"] as? Int ?? 0
                 photo.nsfw = photoDict["nsfw"] as? Bool
-                photo.imageURL = photoDict["image_url"] as? String
+                
+                guard let imageURLs = photoDict["images"] as? [Dictionary<String,Any>] else {
+                    photo.imageURL = photoDict["image_url"] as? String
+                    photo.thumnailURL = photoDict["image_url"] as? String
+                    photoList.photos.append(photo)
+                    return
+                }
+                
+                for imageURL in imageURLs {
+                    let size = imageURL["size"] as? Int ?? 0
+                    
+                    if size == PhotoService.thumnailQuality {
+                        photo.thumnailURL = imageURL["url"] as? String
+                    }
+                    else if size == PhotoService.fullQuality {
+                        photo.imageURL = imageURL["url"] as? String
+                    }
+                }
                 
                 photoList.photos.append(photo)
             }
