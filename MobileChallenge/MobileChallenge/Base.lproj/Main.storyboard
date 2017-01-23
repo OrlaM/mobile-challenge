@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -81,6 +82,7 @@
                                         <connections>
                                             <outlet property="containerView" destination="Vhd-mN-UeD" id="KSU-8D-ed4"/>
                                             <outlet property="photoImageView" destination="qAc-jz-9Gl" id="sbV-He-Ma5"/>
+                                            <segue destination="mPr-8W-WbZ" kind="show" id="YSg-9D-rm7"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -106,10 +108,10 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--View Controller-->
+        <!--Full Screen Photo View Controller-->
         <scene sceneID="rQl-DM-lUC">
             <objects>
-                <viewController id="mPr-8W-WbZ" sceneMemberID="viewController">
+                <viewController id="mPr-8W-WbZ" customClass="FullScreenPhotoViewController" customModule="MobileChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xyp-8H-aK1"/>
                         <viewControllerLayoutGuide type="bottom" id="qr5-Kj-OsO"/>
@@ -117,7 +119,69 @@
                     <view key="view" contentMode="scaleToFill" id="hLK-Mo-xSL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gBK-av-04T">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="2Cs-aX-x31">
+                                    <size key="itemSize" width="320" height="568"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FullScreenCell" id="Vfi-mg-FI0" customClass="FullScreenPhotoCollectionViewCell" customModule="MobileChallenge" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="18" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGf-VV-7pr">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o3d-gl-OvN">
+                                                            <rect key="frame" x="0.0" y="159" width="320" height="250"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="320" id="6jj-Yr-MFK"/>
+                                                                <constraint firstAttribute="width" secondItem="o3d-gl-OvN" secondAttribute="height" multiplier="1:1" priority="900" id="7aI-S8-3S0"/>
+                                                                <constraint firstAttribute="height" constant="250" id="E11-X1-RRa"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="o3d-gl-OvN" firstAttribute="centerX" secondItem="bGf-VV-7pr" secondAttribute="centerX" id="iYO-Uk-P4I"/>
+                                                        <constraint firstItem="o3d-gl-OvN" firstAttribute="centerY" secondItem="bGf-VV-7pr" secondAttribute="centerY" id="ieu-OS-SZC"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="bGf-VV-7pr" firstAttribute="height" secondItem="Vfi-mg-FI0" secondAttribute="height" id="Erc-8N-ugH"/>
+                                            <constraint firstItem="bGf-VV-7pr" firstAttribute="centerX" secondItem="Vfi-mg-FI0" secondAttribute="centerX" id="JPz-Tj-vkc"/>
+                                            <constraint firstItem="bGf-VV-7pr" firstAttribute="centerY" secondItem="Vfi-mg-FI0" secondAttribute="centerY" id="hFN-2n-aQA"/>
+                                            <constraint firstItem="bGf-VV-7pr" firstAttribute="width" secondItem="Vfi-mg-FI0" secondAttribute="width" id="zU6-ks-Xm8"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="containerView" destination="bGf-VV-7pr" id="P3Q-KX-dvf"/>
+                                            <outlet property="photoImageView" destination="o3d-gl-OvN" id="wdM-fe-ray"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="mPr-8W-WbZ" id="BQd-SA-afp"/>
+                                    <outlet property="delegate" destination="mPr-8W-WbZ" id="FuX-hv-YBa"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gBK-av-04T" firstAttribute="width" secondItem="hLK-Mo-xSL" secondAttribute="width" id="CZe-oE-498"/>
+                            <constraint firstItem="gBK-av-04T" firstAttribute="centerX" secondItem="hLK-Mo-xSL" secondAttribute="centerX" id="MNx-jI-jlf"/>
+                            <constraint firstItem="gBK-av-04T" firstAttribute="centerY" secondItem="hLK-Mo-xSL" secondAttribute="centerY" id="hmX-P8-Fmx"/>
+                            <constraint firstItem="gBK-av-04T" firstAttribute="height" secondItem="hLK-Mo-xSL" secondAttribute="height" id="htG-TX-s9W"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uzl-WS-DFX" userLabel="First Responder" sceneMemberID="firstResponder"/>
