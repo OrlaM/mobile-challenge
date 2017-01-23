@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D12b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Photo Selection View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoSelectionViewController" id="BYZ-38-t0r" customClass="PhotoSelectionViewController" customModule="MobileChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,10 +20,90 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ewk-EZ-R0z">
+                                <rect key="frame" x="-0.5" y="-0.5" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="V7t-HH-rxX">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="5" minY="20" maxX="5" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Hi7-Ev-zY4" customClass="PhotoCollectionViewCell" customModule="MobileChallenge" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="20" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vhd-mN-UeD">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qAc-jz-9Gl">
+                                                            <rect key="frame" x="-0.5" y="-0.5" width="100" height="100"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="qAc-jz-9Gl" firstAttribute="centerX" secondItem="Vhd-mN-UeD" secondAttribute="centerX" id="0hW-CL-1M1"/>
+                                                        <constraint firstItem="qAc-jz-9Gl" firstAttribute="width" secondItem="Vhd-mN-UeD" secondAttribute="width" id="5ff-k0-f3V"/>
+                                                        <constraint firstItem="qAc-jz-9Gl" firstAttribute="height" secondItem="Vhd-mN-UeD" secondAttribute="height" id="Mxq-vH-Y72"/>
+                                                        <constraint firstItem="qAc-jz-9Gl" firstAttribute="centerY" secondItem="Vhd-mN-UeD" secondAttribute="centerY" id="t5I-yc-rKv"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="Vhd-mN-UeD" firstAttribute="width" secondItem="Hi7-Ev-zY4" secondAttribute="width" id="AC2-iu-xUL"/>
+                                            <constraint firstItem="Vhd-mN-UeD" firstAttribute="centerX" secondItem="Hi7-Ev-zY4" secondAttribute="centerX" id="Lss-vM-onL"/>
+                                            <constraint firstItem="Vhd-mN-UeD" firstAttribute="centerY" secondItem="Hi7-Ev-zY4" secondAttribute="centerY" id="oqk-aC-2yL"/>
+                                            <constraint firstItem="Vhd-mN-UeD" firstAttribute="height" secondItem="Hi7-Ev-zY4" secondAttribute="height" id="rmC-7n-NYR"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="containerView" destination="Vhd-mN-UeD" id="mfA-UN-YuH"/>
+                                            <outlet property="photoImageView" destination="qAc-jz-9Gl" id="JfJ-hF-W3U"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="r2W-rG-wdb"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Z79-k2-u4A"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ewk-EZ-R0z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aPn-fs-g3A"/>
+                            <constraint firstItem="Ewk-EZ-R0z" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="bEE-3n-gvV"/>
+                            <constraint firstItem="Ewk-EZ-R0z" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="fNZ-Xo-qXp"/>
+                            <constraint firstItem="Ewk-EZ-R0z" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="oWI-vt-ANn"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="photoCollectionView" destination="Ewk-EZ-R0z" id="MR8-G4-vdP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Q2h-YD-Rhl">
+            <objects>
+                <viewController id="48a-ba-Tsf" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FHb-qy-wRE"/>
+                        <viewControllerLayoutGuide type="bottom" id="MM6-Mr-MV1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Usl-GY-qLv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zrE-Kr-vF8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
