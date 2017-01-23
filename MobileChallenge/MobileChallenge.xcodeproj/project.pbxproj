@@ -12,6 +12,9 @@
 		000868811E36631300965308 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0008687F1E36631300965308 /* Main.storyboard */; };
 		000868831E36631300965308 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 000868821E36631300965308 /* Assets.xcassets */; };
 		000868861E36631300965308 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 000868841E36631300965308 /* LaunchScreen.storyboard */; };
+		000868931E367BA300965308 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000868921E367BA300965308 /* PhotoModel.swift */; };
+		000868951E367BC900965308 /* PhotoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000868941E367BC900965308 /* PhotoListModel.swift */; };
+		000868971E367DDE00965308 /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000868961E367DDE00965308 /* PhotoService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		000868821E36631300965308 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		000868851E36631300965308 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		000868871E36631300965308 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		000868921E367BA300965308 /* PhotoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
+		000868941E367BC900965308 /* PhotoListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoListModel.swift; sourceTree = "<group>"; };
+		000868961E367DDE00965308 /* PhotoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,8 @@
 		0008688E1E36726D00965308 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				000868921E367BA300965308 /* PhotoModel.swift */,
+				000868941E367BC900965308 /* PhotoListModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -86,6 +94,7 @@
 		0008688F1E36726D00965308 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				000868961E367DDE00965308 /* PhotoService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -176,7 +185,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				000868971E367DDE00965308 /* PhotoService.swift in Sources */,
+				000868931E367BA300965308 /* PhotoModel.swift in Sources */,
 				0008687E1E36631300965308 /* ViewController.swift in Sources */,
+				000868951E367BC900965308 /* PhotoListModel.swift in Sources */,
 				0008687C1E36631300965308 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

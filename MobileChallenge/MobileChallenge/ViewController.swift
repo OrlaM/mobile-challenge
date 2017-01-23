@@ -13,6 +13,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let service = PhotoService()
+        
+        service.getPhotos(photoURL: .getPopularPhotoList) { (photoList) in
+            print(photoList)
+        }
     }
 
     override func didReceiveMemoryWarning() {
