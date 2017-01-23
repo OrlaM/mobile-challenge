@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class PhotoCollectionViewCell: UICollectionViewCell {
+class ThumnailPhotoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var photoImageView: UIImageView!

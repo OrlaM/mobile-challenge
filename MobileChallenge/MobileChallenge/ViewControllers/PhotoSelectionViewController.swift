@@ -59,7 +59,7 @@ extension PhotoSelectionViewController: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let photoCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? PhotoCollectionViewCell else {
+        guard let photoCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? ThumnailPhotoCollectionViewCell else {
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
             return cell
