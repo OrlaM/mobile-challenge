@@ -18,16 +18,19 @@ class PhotoSelectionViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        
         let service = PhotoService()
         
-        service.getPhotos(photoURL: .getPopularPhotoList) { (photoList) in
+        service.getPhotos() { (photoList) in
             self.photoList = photoList
             DispatchQueue.main.sync {
                 self.photoCollectionView.reloadData()
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewWillLayoutSubviews() {
@@ -68,6 +71,18 @@ extension PhotoSelectionViewController: UICollectionViewDelegate, UICollectionVi
         photoCell.updateContent(photoList.photos[indexPath.row])
 
         return photoCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "FullScreenPhotoViewController") as? FullScreenPhotoViewController {
+            
+            vc.photoList = self.photoList
+            vc.currentPhotoIndex = indexPath.row
+            self.show(vc, sender: self)
+        }
+        
     }
     
 }

@@ -10,34 +10,29 @@ import UIKit
 
 class FullScreenPhotoViewController: UIViewController {
     
-    var photoID: Int = 0
+    var currentPhotoIndex = 0
+    var photoList = PhotoListModel()
+    
+    @IBOutlet weak var photoCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        
-        let service = PhotoService()
-        
-        service.getPhotos(photoURL: .getPopularPhotoList) { (photoList) in
-//            self.photoList = photoList
-//            DispatchQueue.main.sync {
-//                self.photoCollectionView.reloadData()
-//            }
-        }
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
+    
+
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         //photoCollectionView.reloadData()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+    override func viewDidLayoutSubviews() {
+        let indexPath = IndexPath(row: currentPhotoIndex, section: 0)
+        photoCollectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: false)
     }
-    
 }
 
 extension FullScreenPhotoViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -47,7 +42,7 @@ extension FullScreenPhotoViewController: UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return photoList.photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -62,7 +57,7 @@ extension FullScreenPhotoViewController: UICollectionViewDelegate, UICollectionV
             return cell
         }
         
-       // photoCell.updateContent(photoList.photos[indexPath.row])
+        photoCell.updateContent(photoList.photos[indexPath.row])
         
         return photoCell
     }

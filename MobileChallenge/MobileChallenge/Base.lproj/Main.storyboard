@@ -82,7 +82,6 @@
                                         <connections>
                                             <outlet property="containerView" destination="Vhd-mN-UeD" id="KSU-8D-ed4"/>
                                             <outlet property="photoImageView" destination="qAc-jz-9Gl" id="sbV-He-Ma5"/>
-                                            <segue destination="mPr-8W-WbZ" kind="show" id="YSg-9D-rm7"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -111,7 +110,7 @@
         <!--Full Screen Photo View Controller-->
         <scene sceneID="rQl-DM-lUC">
             <objects>
-                <viewController id="mPr-8W-WbZ" customClass="FullScreenPhotoViewController" customModule="MobileChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FullScreenPhotoViewController" id="mPr-8W-WbZ" customClass="FullScreenPhotoViewController" customModule="MobileChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xyp-8H-aK1"/>
                         <viewControllerLayoutGuide type="bottom" id="qr5-Kj-OsO"/>
@@ -131,7 +130,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FullScreenCell" id="Vfi-mg-FI0" customClass="FullScreenPhotoCollectionViewCell" customModule="MobileChallenge" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="18" width="320" height="568"/>
+                                        <rect key="frame" x="0.0" y="50" width="320" height="568"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -183,6 +182,9 @@
                             <constraint firstItem="gBK-av-04T" firstAttribute="height" secondItem="hLK-Mo-xSL" secondAttribute="height" id="htG-TX-s9W"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="photoCollectionView" destination="gBK-av-04T" id="Fy1-qv-9Ez"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uzl-WS-DFX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
