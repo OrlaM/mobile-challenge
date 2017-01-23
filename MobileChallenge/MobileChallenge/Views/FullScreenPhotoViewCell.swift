@@ -17,7 +17,7 @@ class FullScreenPhotoCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageAspectRatioConstraint: NSLayoutConstraint!
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

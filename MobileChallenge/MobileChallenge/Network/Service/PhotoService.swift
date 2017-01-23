@@ -10,53 +10,25 @@ import Foundation
 
 class PhotoService {
     
-    static let baseURL = "https://api.500px.com/v1/"
-    static let consumerKey = "consumer_key=LrkHj1j2PydlgEdRgtEl30DQhFjIUPM4yHbSwHAb"
     static let thumnailQuality = 3
     static let fullQuality = 1080
+    static let catagoryToExclude = 4
     
-    enum PhotoURL {
+    let baseURL = "https://api.500px.com/v1/photos?"
+    let consumerKey = "consumer_key=LrkHj1j2PydlgEdRgtEl30DQhFjIUPM4yHbSwHAb"
+    let quality = "image_size=\(thumnailQuality),\(fullQuality)&"
+    let exclude = "exclude=\(catagoryToExclude)&"
+    let feature = "feature=popular&"
         
-        case getPopularPhotoList
-        case getIndividualPhoto(id:Int)
-        
-        public var quality: String {
-            switch self {
-            case .getPopularPhotoList:
-                return "image_size=\(thumnailQuality),\(fullQuality)&"
-            case .getIndividualPhoto:
-                return "image_size=\(fullQuality)&"
-            }
-        }
-        
-        public var method: String {
-            switch self {
-            case .getPopularPhotoList,
-                 .getIndividualPhoto:
-                return "GET"
-            }
-        }
-        
-        public var path: String {
-            switch self {
-            case .getPopularPhotoList:
-                return baseURL + "photos?feature=popular&" + quality + consumerKey
-            case .getIndividualPhoto(let photoID):
-                return baseURL + "photos/\(photoID)?" + quality + consumerKey
-            }
-        }
-    
-    }
-    
     func getPhotos(_ completion: @escaping (_ result: PhotoListModel) -> Void) {
         
-        guard let url = URL(string: PhotoURL.getPopularPhotoList.path) else {
+        guard let url = URL(string: baseURL + feature + exclude + quality + consumerKey) else {
             return
         }
         
         let session = URLSession.shared
         var request = URLRequest(url: url)
-        request.httpMethod = PhotoURL.getPopularPhotoList.method
+        request.httpMethod = "GET"
         request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
         
         
