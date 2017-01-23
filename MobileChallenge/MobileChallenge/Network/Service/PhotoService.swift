@@ -12,12 +12,22 @@ class PhotoService {
     
     static let baseURL = "https://api.500px.com/v1/"
     static let consumerKey = "consumer_key=LrkHj1j2PydlgEdRgtEl30DQhFjIUPM4yHbSwHAb"
+    static let thumnailQuality = 3
+    static let fullQuality = 1080
     
     enum PhotoURL {
         
         case getPopularPhotoList
         case getIndividualPhoto(id:Int)
         
+        public var quality: String {
+            switch self {
+            case .getPopularPhotoList:
+                return "image_size=\(thumnailQuality)&"
+            case .getIndividualPhoto:
+                return "image_size=\(fullQuality)&"
+            }
+        }
         public var method: String {
             switch self {
             case .getPopularPhotoList,
@@ -29,9 +39,9 @@ class PhotoService {
         public var path: String {
             switch self {
             case .getPopularPhotoList:
-                return baseURL + "photos?feature=popular&" + consumerKey
+                return baseURL + "photos?feature=popular&" + quality + consumerKey
             case .getIndividualPhoto(let photoID):
-                return baseURL + "photos/\(photoID)?" + consumerKey
+                return baseURL + "photos/\(photoID)?" + quality + consumerKey
             }
         }
     
