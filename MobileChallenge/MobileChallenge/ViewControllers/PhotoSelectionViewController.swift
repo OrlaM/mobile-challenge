@@ -56,8 +56,8 @@ extension PhotoSelectionViewController: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (UIScreen.main.bounds.size.width - 10)/3.0
-        return CGSize(width: width, height: width*0.7)
+        let width = UIScreen.main.bounds.size.width/3.0
+        return CGSize(width: width, height: width*0.75)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

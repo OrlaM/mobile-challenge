@@ -14,6 +14,7 @@
         <scene sceneID="Hur-DR-pDu">
             <objects>
                 <navigationController id="j5b-oa-3XK" sceneMemberID="viewController">
+                    <nil key="simulatedStatusBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rOi-VS-Jrg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -24,7 +25,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ATP-J2-eJU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-812" y="37"/>
+            <point key="canvasLocation" x="-809" y="82"/>
         </scene>
         <!--Photo Selection View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -45,11 +46,11 @@
                                     <size key="itemSize" width="100" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="Hi7-Ev-zY4" customClass="ThumnailPhotoCollectionViewCell" customModule="MobileChallenge" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="5" width="100" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -140,15 +141,15 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o3d-gl-OvN">
-                                                            <rect key="frame" x="0.0" y="159" width="320" height="250"/>
+                                                            <rect key="frame" x="0.0" y="124" width="320" height="320"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="320" id="6jj-Yr-MFK"/>
-                                                                <constraint firstAttribute="width" secondItem="o3d-gl-OvN" secondAttribute="height" multiplier="1:1" priority="900" id="7aI-S8-3S0"/>
-                                                                <constraint firstAttribute="height" constant="250" id="E11-X1-RRa"/>
+                                                                <constraint firstAttribute="width" priority="950" constant="320" id="6jj-Yr-MFK"/>
+                                                                <constraint firstAttribute="width" secondItem="o3d-gl-OvN" secondAttribute="height" multiplier="1:1" id="7aI-S8-3S0"/>
+                                                                <constraint firstAttribute="height" priority="900" constant="450" id="E11-X1-RRa"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="o3d-gl-OvN" firstAttribute="centerX" secondItem="bGf-VV-7pr" secondAttribute="centerX" id="iYO-Uk-P4I"/>
                                                         <constraint firstItem="o3d-gl-OvN" firstAttribute="centerY" secondItem="bGf-VV-7pr" secondAttribute="centerY" id="ieu-OS-SZC"/>
@@ -164,6 +165,9 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="containerView" destination="bGf-VV-7pr" id="P3Q-KX-dvf"/>
+                                            <outlet property="imageAspectRatioConstraint" destination="7aI-S8-3S0" id="0G8-71-V0T"/>
+                                            <outlet property="imageHeightConstraint" destination="E11-X1-RRa" id="l38-f4-GDj"/>
+                                            <outlet property="imageWidthConstraint" destination="6jj-Yr-MFK" id="1Cv-mA-TE7"/>
                                             <outlet property="photoImageView" destination="o3d-gl-OvN" id="wdM-fe-ray"/>
                                         </connections>
                                     </collectionViewCell>

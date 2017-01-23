@@ -21,12 +21,10 @@ class FullScreenPhotoViewController: UIViewController {
         
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
-    
 
-    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        //photoCollectionView.reloadData()
+        photoCollectionView.reloadData()
     }
 
     override func viewDidLayoutSubviews() {
@@ -62,4 +60,9 @@ extension FullScreenPhotoViewController: UICollectionViewDelegate, UICollectionV
         return photoCell
     }
     
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let pageWidth = scrollView.frame.size.width;
+        currentPhotoIndex = Int(scrollView.contentOffset.x / pageWidth);
+        print(currentPhotoIndex)
+    }
 }
