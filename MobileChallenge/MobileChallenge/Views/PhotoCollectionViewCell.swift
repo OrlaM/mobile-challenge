@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PhotoCollectionViewCell: UICollectionViewCell {
     
@@ -17,10 +18,16 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
     }
     
-    func updateContent() {
-        //containerView.layer.cornerRadius = 6
-        self.containerView.backgroundColor = UIColor.red
-        self.containerView.layer.borderColor = UIColor.black.cgColor
-        self.containerView.layer.borderWidth = 2
+    func updateContent(_ photoData: PhotoModel) {
+        
+        guard let imageURL = photoData.imageURL else {
+            return // TODO: Error condition
+        }
+
+        guard let url = URL(string: imageURL) else {
+            return // TODO: Error condition
+        }
+        
+        photoImageView.sd_setImage(with: url)
     }
 }

@@ -12,14 +12,21 @@ class PhotoSelectionViewController: UIViewController {
     
     @IBOutlet weak var photoCollectionView: UICollectionView!
     
+    var photoList = PhotoListModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
         let service = PhotoService()
         
         service.getPhotos(photoURL: .getPopularPhotoList) { (photoList) in
-            print(photoList)
+            self.photoList = photoList
+            DispatchQueue.main.sync {
+                self.photoCollectionView.reloadData()
+            }
         }
     }
     
@@ -42,7 +49,7 @@ extension PhotoSelectionViewController: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return photoList.photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -58,7 +65,7 @@ extension PhotoSelectionViewController: UICollectionViewDelegate, UICollectionVi
             return cell
         }
         
-        photoCell.updateContent()
+        photoCell.updateContent(photoList.photos[indexPath.row])
 
         return photoCell
     }
