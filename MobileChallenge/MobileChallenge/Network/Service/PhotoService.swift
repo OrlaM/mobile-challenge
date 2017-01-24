@@ -30,17 +30,17 @@ class PhotoService {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
-        
-        
-        // TODO: Add error handling
+
         let task = session.dataTask(with: request) { (data,response,error) in
             guard let data = data else {
+                print("Something went wrong")
                 return
             }
             
             let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
             
             guard let photoData = json as? [String: Any] else {
+                print("Something went wrong")
                 return
             }
             
@@ -55,6 +55,7 @@ class PhotoService {
             }
             
             guard let photos = photoData["photos"] as? Array<Dictionary<String, Any>> else {
+                print("Something went wrong")
                 return
             }
             

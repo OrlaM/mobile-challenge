@@ -21,11 +21,15 @@ class ThumnailPhotoCollectionViewCell: UICollectionViewCell {
     func updateContent(_ photoData: PhotoModel) {
         
         guard let imageURL = photoData.thumnailURL else {
-            return // TODO: Error condition
+            print("Something went wrong")
+            photoImageView.image = UIImage(named: "placeholder")
+            return
         }
 
         guard let url = URL(string: imageURL) else {
-            return // TODO: Error condition
+            print("Something went wrong")
+            photoImageView.image = UIImage(named: "placeholder")
+            return
         }
         
         photoImageView.sd_setImage(with: url)
