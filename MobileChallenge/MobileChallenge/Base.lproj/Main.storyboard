@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -107,6 +106,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="54" y="81"/>
         </scene>
         <!--Full Screen Photo View Controller-->
         <scene sceneID="rQl-DM-lUC">
@@ -140,17 +140,14 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGf-VV-7pr">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o3d-gl-OvN">
-                                                            <rect key="frame" x="0.0" y="124" width="320" height="320"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" priority="950" constant="320" id="6jj-Yr-MFK"/>
-                                                                <constraint firstAttribute="width" secondItem="o3d-gl-OvN" secondAttribute="height" multiplier="1:1" id="7aI-S8-3S0"/>
-                                                                <constraint firstAttribute="height" priority="900" constant="450" id="E11-X1-RRa"/>
-                                                            </constraints>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o3d-gl-OvN">
+                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
+                                                        <constraint firstItem="o3d-gl-OvN" firstAttribute="width" secondItem="bGf-VV-7pr" secondAttribute="width" id="QuX-aK-wnw"/>
+                                                        <constraint firstItem="o3d-gl-OvN" firstAttribute="height" secondItem="bGf-VV-7pr" secondAttribute="height" id="RbQ-0i-HLy"/>
                                                         <constraint firstItem="o3d-gl-OvN" firstAttribute="centerX" secondItem="bGf-VV-7pr" secondAttribute="centerX" id="iYO-Uk-P4I"/>
                                                         <constraint firstItem="o3d-gl-OvN" firstAttribute="centerY" secondItem="bGf-VV-7pr" secondAttribute="centerY" id="ieu-OS-SZC"/>
                                                     </constraints>
@@ -165,9 +162,6 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="containerView" destination="bGf-VV-7pr" id="P3Q-KX-dvf"/>
-                                            <outlet property="imageAspectRatioConstraint" destination="7aI-S8-3S0" id="0G8-71-V0T"/>
-                                            <outlet property="imageHeightConstraint" destination="E11-X1-RRa" id="l38-f4-GDj"/>
-                                            <outlet property="imageWidthConstraint" destination="6jj-Yr-MFK" id="1Cv-mA-TE7"/>
                                             <outlet property="photoImageView" destination="o3d-gl-OvN" id="wdM-fe-ray"/>
                                         </connections>
                                     </collectionViewCell>
@@ -192,7 +186,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uzl-WS-DFX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="868" y="37"/>
+            <point key="canvasLocation" x="823" y="81"/>
         </scene>
     </scenes>
 </document>
