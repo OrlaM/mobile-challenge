@@ -63,6 +63,5 @@ extension FullScreenPhotoViewController: UICollectionViewDelegate, UICollectionV
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageWidth = scrollView.frame.size.width;
         currentPhotoIndex = Int(scrollView.contentOffset.x / pageWidth);
-        print(currentPhotoIndex)
     }
 }
